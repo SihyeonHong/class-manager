@@ -3,6 +3,7 @@
 import { CurrentTime } from "@/components/CurrentTime";
 import { NotificationButton } from "@/components/NotificationButton";
 import { ClockIcon } from "@/components/svg/ClockIcon";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface HeaderProps {
   notificationPermission: NotificationPermission | "default";
@@ -22,7 +23,7 @@ export function Header({
           </div>
           <div>
             <h1 className="text-foreground text-base font-bold">
-              MBEST 타이머
+              클래스 매니저
             </h1>
             <p className="text-2xs text-muted tracking-widest uppercase">
               Class Time Manager
@@ -36,6 +37,7 @@ export function Header({
             permission={notificationPermission}
             onRequest={onRequestNotificationPermission}
           />
+          <ThemeToggle />
         </div>
       </div>
     </header>
