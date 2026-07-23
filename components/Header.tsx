@@ -26,7 +26,7 @@ export function Header({
               클래스 매니저
             </h1>
             <p className="text-2xs text-muted tracking-widest uppercase">
-              Class Time Manager
+              Class Manager
             </p>
           </div>
         </div>

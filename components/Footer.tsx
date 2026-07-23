@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="border-glass-border relative z-10 border-t py-3.5">
       <p className="text-muted text-center text-xs">
-        © {yearRange} , developed by{" "}
+        © {yearRange}, developed by{" "}
         <a
           href="https://github.com/SihyeonHong/mbest-timechecker"
           target="_blank"
