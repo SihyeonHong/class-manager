@@ -102,9 +102,7 @@ export function StudentCard({
   } else {
     statusLabel = "수업 중";
     const currentSlot = student.classSlots[d.currentClassIndex];
-    const theme = currentSlot
-      ? subjectThemes[currentSlot.subject]
-      : subjectThemes.english;
+    const theme = currentSlot ? subjectThemes[currentSlot.subject] : subjectThemes.english;
 
     statusColor = theme.color;
     statusBg = theme.bg;
@@ -115,21 +113,15 @@ export function StudentCard({
   }
 
   return (
-    <div
-      className={`glass-card animate-scale-in p-3.5 transition-all duration-300 ${cardBorder}`}
-    >
+    <div className={`glass-card animate-scale-in p-3.5 transition-all duration-300 ${cardBorder}`}>
       {/* ---- Header: Name + Elapsed + Status + Delete (single row) ---- */}
       <div className="mb-2 flex items-center gap-2">
-        <span className="text-foreground min-w-0 truncate text-base font-bold">
-          {student.name}
-        </span>
-        <span
-          className={`shrink-0 font-mono text-sm font-bold ${elapsedColor}`}
-        >
+        <span className="min-w-0 truncate text-base font-bold text-foreground">{student.name}</span>
+        <span className={`shrink-0 font-mono text-sm font-bold ${elapsedColor}`}>
           {d.elapsedMinutes}분 경과
         </span>
         <span
-          className={`text-2xs flex shrink-0 items-center gap-1 rounded-full px-1.5 py-0.5 font-medium ${statusColor} ${statusBg} ${statusBorder}`}
+          className={`flex shrink-0 items-center gap-1 rounded-full px-1.5 py-0.5 text-2xs font-medium ${statusColor} ${statusBg} ${statusBorder}`}
         >
           {!d.isFinished && dotColor && (
             <span
@@ -138,9 +130,7 @@ export function StudentCard({
               }`}
             />
           )}
-          {d.isFinished && (
-            <CheckCircleIcon className="text-outdated h-3 w-3" />
-          )}
+          {d.isFinished && <CheckCircleIcon className="h-3 w-3 text-outdated" />}
           {statusLabel}
         </span>
 
@@ -149,13 +139,13 @@ export function StudentCard({
             <div className="animate-scale-in flex items-center gap-1">
               <button
                 onClick={onRemove}
-                className="text-2xs text-danger bg-danger/10 hover:bg-danger/20 cursor-pointer rounded-md px-1.5 py-0.5 font-medium transition-colors"
+                className="cursor-pointer rounded-md bg-danger/10 px-1.5 py-0.5 text-2xs font-medium text-danger transition-colors hover:bg-danger/20"
               >
                 삭제
               </button>
               <button
                 onClick={() => setConfirmDelete(false)}
-                className="text-2xs text-muted bg-card hover:bg-card-hover cursor-pointer rounded-md px-1.5 py-0.5 font-medium transition-colors"
+                className="cursor-pointer rounded-md bg-card px-1.5 py-0.5 text-2xs font-medium text-muted transition-colors hover:bg-card-hover"
               >
                 취소
               </button>
@@ -163,7 +153,7 @@ export function StudentCard({
           ) : (
             <button
               onClick={() => setConfirmDelete(true)}
-              className="text-muted hover:text-danger hover:bg-danger/10 cursor-pointer rounded-lg p-1 transition-all"
+              className="cursor-pointer rounded-lg p-1 text-muted transition-all hover:bg-danger/10 hover:text-danger"
               title="삭제"
             >
               <TrashIcon className="h-3.5 w-3.5" />
@@ -174,13 +164,13 @@ export function StudentCard({
 
       {/* ---- Info + Multi-Segmented Progress Bar ---- */}
       <div className="mb-2.5">
-        <div className="text-muted mb-1 flex items-center justify-between text-xs font-medium">
+        <div className="mb-1 flex items-center justify-between text-xs font-medium text-muted">
           <span>
             시작 {fmt(student.arrivalDate)} ({student.numberOfClasses}교시)
           </span>
           <span>종료 {fmt(student.dismissalTime)}</span>
         </div>
-        <div className="bg-progress-track relative h-1 w-full overflow-hidden rounded-full">
+        <div className="relative h-1 w-full overflow-hidden rounded-full bg-progress-track">
           {student.classSlots.map((slot, i) => {
             const start = slot.start.getTime();
             const end = slot.end.getTime();
@@ -193,15 +183,11 @@ export function StudentCard({
               if (currentTime >= end) {
                 pct = 100;
               } else if (currentTime > start) {
-                pct = Math.min(
-                  100,
-                  Math.max(0, ((currentTime - start) / duration) * 100),
-                );
+                pct = Math.min(100, Math.max(0, ((currentTime - start) / duration) * 100));
               }
             }
 
-            const fillBg =
-              subjectThemes[slot.subject]?.progress || "bg-primary";
+            const fillBg = subjectThemes[slot.subject]?.progress || "bg-primary";
             const segWidth = 100 / student.classSlots.length;
             const leftPos = i * segWidth;
             const filledWidth = (pct / 100) * segWidth;
@@ -225,16 +211,13 @@ export function StudentCard({
         {student.classSlots.map((slot, i) => {
           const isCurrent = d.currentClassIndex === i;
           const isPast = d.isFinished || d.currentClassIndex > i;
-          const slotTheme =
-            subjectThemes[slot.subject] || subjectThemes.english;
+          const slotTheme = subjectThemes[slot.subject] || subjectThemes.english;
 
           return (
             <div
               key={`${slot.label}-${i}`}
               className={`flex items-center gap-2 rounded-lg px-2.5 py-1 text-xs transition-all duration-200 ${
-                isCurrent
-                  ? `${slotTheme.bg} ${slotTheme.border}`
-                  : "bg-transparent"
+                isCurrent ? `${slotTheme.bg} ${slotTheme.border}` : "bg-transparent"
               }`}
             >
               <div
@@ -248,11 +231,7 @@ export function StudentCard({
               />
               <span
                 className={`min-w-0 font-medium ${
-                  isCurrent
-                    ? slotTheme.color
-                    : isPast
-                      ? "text-outdated"
-                      : "text-foreground/70"
+                  isCurrent ? slotTheme.color : isPast ? "text-outdated" : "text-foreground/70"
                 }`}
               >
                 {slot.label}
@@ -266,14 +245,12 @@ export function StudentCard({
               </span>
               {isCurrent && (
                 <span
-                  className={`text-2xs shrink-0 animate-pulse rounded-full px-1.5 py-0.5 font-medium ${slotTheme.badge}`}
+                  className={`shrink-0 animate-pulse rounded-full px-1.5 py-0.5 text-2xs font-medium ${slotTheme.badge}`}
                 >
                   진행 중
                 </span>
               )}
-              {isPast && (
-                <CheckCircleIcon className="text-outdated h-3.5 w-3.5 shrink-0" />
-              )}
+              {isPast && <CheckCircleIcon className="h-3.5 w-3.5 shrink-0 text-outdated" />}
             </div>
           );
         })}

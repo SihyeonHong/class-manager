@@ -34,7 +34,7 @@ export function CurrentTime() {
   if (!display.time) return null;
 
   return (
-    <div className="text-muted flex items-center gap-2 font-mono text-sm">
+    <div className="flex items-center gap-2 font-mono text-sm text-muted">
       <span>{display.date}</span>
       <ClockIcon className="h-4 w-4" />
       <span>{display.time}</span>

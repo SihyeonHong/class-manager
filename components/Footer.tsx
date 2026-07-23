@@ -3,8 +3,8 @@ export function Footer() {
   const yearRange = currentYear > 2026 ? `2026 - ${currentYear}` : "2026";
 
   return (
-    <footer className="border-glass-border relative z-10 border-t py-3.5">
-      <p className="text-muted text-center text-xs">
+    <footer className="relative z-10 border-t border-glass-border py-3.5">
+      <p className="text-center text-xs text-muted">
         © {yearRange}, developed by{" "}
         <a
           href="https://github.com/SihyeonHong/mbest-timechecker"

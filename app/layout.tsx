@@ -14,10 +14,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {  
+export const metadata: Metadata = {
   title: "클래스 매니저",
-  description:
-    "학생별 교시 전환 타이밍을 실시간으로 관리하는 대시보드입니다.",
+  description: "학생별 교시 전환 타이밍을 실시간으로 관리하는 대시보드입니다.",
 };
 
 export default function RootLayout({

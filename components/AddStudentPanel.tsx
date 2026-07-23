@@ -80,18 +80,15 @@ export function AddStudentPanel({
       <div className="glass-card p-4 lg:sticky lg:top-5">
         {/* Header */}
         <div className="mb-4 flex items-center gap-2">
-          <div className="bg-primary/15 text-primary-light flex h-7 w-7 items-center justify-center rounded-lg">
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/15 text-primary-light">
             <PlusIcon className="h-3.5 w-3.5" />
           </div>
-          <h2 className="text-foreground text-sm font-semibold">학생 등록</h2>
+          <h2 className="text-sm font-semibold text-foreground">학생 등록</h2>
         </div>
 
         {/* Name */}
         <div className="mb-2.5">
-          <label
-            htmlFor="student-name"
-            className="text-muted mb-1 block text-xs font-medium"
-          >
+          <label htmlFor="student-name" className="mb-1 block text-xs font-medium text-muted">
             학생 이름
           </label>
           <input
@@ -101,21 +98,18 @@ export function AddStudentPanel({
             onChange={(e) => setFormName(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="이름 입력"
-            className="bg-background border-glass-border text-foreground placeholder:text-muted/40 w-full rounded-lg border px-2.5 py-2 text-sm transition-all duration-200"
+            className="w-full rounded-lg border border-glass-border bg-background px-2.5 py-2 text-sm text-foreground transition-all duration-200 placeholder:text-muted/40"
           />
         </div>
 
         {/* Time input */}
         <div className="mb-2.5">
           <div className="mb-1 flex items-center justify-between">
-            <label
-              htmlFor="hour-input"
-              className="text-muted text-xs font-medium"
-            >
+            <label htmlFor="hour-input" className="text-xs font-medium text-muted">
               시작 시간
             </label>
             {parsedTimeDisplay && (
-              <span className="text-primary-light font-mono text-xs font-bold">
+              <span className="font-mono text-xs font-bold text-primary-light">
                 → {parsedTimeDisplay}
               </span>
             )}
@@ -132,11 +126,9 @@ export function AddStudentPanel({
                   onChange={(e) => setFormHourInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="시"
-                  className="bg-background border-glass-border text-foreground placeholder:text-muted/40 w-full rounded-lg border px-2 py-2 text-right font-mono text-sm transition-all duration-200"
+                  className="w-full rounded-lg border border-glass-border bg-background px-2 py-2 text-right font-mono text-sm text-foreground transition-all duration-200 placeholder:text-muted/40"
                 />
-                <span className="text-muted shrink-0 text-xs font-medium">
-                  시
-                </span>
+                <span className="shrink-0 text-xs font-medium text-muted">시</span>
               </div>
               <div className="flex min-w-0 flex-1 items-center gap-1">
                 <input
@@ -148,17 +140,15 @@ export function AddStudentPanel({
                   onChange={(e) => setFormMinuteInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="분"
-                  className="bg-background border-glass-border text-foreground placeholder:text-muted/40 w-full rounded-lg border px-2 py-2 text-right font-mono text-sm transition-all duration-200"
+                  className="w-full rounded-lg border border-glass-border bg-background px-2 py-2 text-right font-mono text-sm text-foreground transition-all duration-200 placeholder:text-muted/40"
                 />
-                <span className="text-muted shrink-0 text-xs font-medium">
-                  분
-                </span>
+                <span className="shrink-0 text-xs font-medium text-muted">분</span>
               </div>
             </div>
 
             {/* AM / PM toggle */}
             <div
-              className="border-glass-border flex shrink-0 overflow-hidden rounded-lg border"
+              className="flex shrink-0 overflow-hidden rounded-lg border border-glass-border"
               role="radiogroup"
               aria-label="오전/오후 선택"
             >
@@ -176,7 +166,7 @@ export function AddStudentPanel({
               >
                 오전
               </button>
-              <div className="bg-glass-border w-px" />
+              <div className="w-px bg-glass-border" />
               <button
                 id="toggle-pm"
                 type="button"
@@ -198,9 +188,7 @@ export function AddStudentPanel({
         {/* Subject selection */}
         <div className="mb-3">
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-muted block text-xs font-medium">
-              과목 선택
-            </label>
+            <label className="block text-xs font-medium text-muted">과목 선택</label>
             <span className="text-2xs text-muted/70">클릭 시 교시 수 변경</span>
           </div>
           <div className="grid grid-cols-3 gap-1.5">
@@ -226,11 +214,7 @@ export function AddStudentPanel({
                   >
                     {opt.label}
                   </span>
-                  <span
-                    className={`text-2xs ${
-                      isSelected ? opt.activeText : "text-muted"
-                    }`}
-                  >
+                  <span className={`text-2xs ${isSelected ? opt.activeText : "text-muted"}`}>
                     {getSubLabel(count)}
                   </span>
                 </button>
@@ -246,8 +230,8 @@ export function AddStudentPanel({
           onClick={onSubmit}
           className={`flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg py-2.5 text-sm font-semibold transition-all duration-200 ${
             canAddStudent
-              ? "bg-primary hover:bg-primary/90 shadow-primary/20 text-white shadow-md active:scale-[0.98]"
-              : "bg-card text-muted cursor-not-allowed"
+              ? "bg-primary text-white shadow-md shadow-primary/20 hover:bg-primary/90 active:scale-[0.98]"
+              : "cursor-not-allowed bg-card text-muted"
           }`}
         >
           <PlusIcon className="h-4 w-4" />

@@ -10,24 +10,17 @@ interface HeaderProps {
   onRequestNotificationPermission: () => void;
 }
 
-export function Header({
-  notificationPermission,
-  onRequestNotificationPermission,
-}: HeaderProps) {
+export function Header({ notificationPermission, onRequestNotificationPermission }: HeaderProps) {
   return (
-    <header className="border-glass-border relative z-10 border-b">
+    <header className="relative z-10 border-b border-glass-border">
       <div className="mx-auto flex max-w-[1600px] items-center justify-between px-4 py-3.5 sm:px-6">
         <div className="flex items-center gap-3">
-          <div className="bg-primary shadow-primary/20 flex h-9 w-9 items-center justify-center rounded-xl shadow-md">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary shadow-md shadow-primary/20">
             <ClockIcon className="h-5 w-5 text-white" />
           </div>
           <div>
-            <h1 className="text-foreground text-base font-bold">
-              클래스 매니저
-            </h1>
-            <p className="text-2xs text-muted tracking-widest uppercase">
-              Class Manager
-            </p>
+            <h1 className="text-base font-bold text-foreground">클래스 매니저</h1>
+            <p className="text-2xs tracking-widest text-muted uppercase">Class Manager</p>
           </div>
         </div>
 

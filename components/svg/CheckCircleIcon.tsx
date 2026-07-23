@@ -1,8 +1,4 @@
-export function CheckCircleIcon({
-  className = "w-5 h-5",
-}: {
-  className?: string;
-}) {
+export function CheckCircleIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg
       className={className}

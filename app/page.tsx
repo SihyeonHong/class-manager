@@ -33,10 +33,7 @@ export default function Home() {
           <div className="flex min-w-0 flex-1 flex-col gap-4">
             {/* Summary bar */}
             {mgr.students.length > 0 && (
-              <SummaryBar
-                students={mgr.students}
-                currentTime={mgr.currentTime}
-              />
+              <SummaryBar students={mgr.students} currentTime={mgr.currentTime} />
             )}
 
             {/* Student cards grid — 4 per row on xl */}

@@ -13,11 +13,7 @@ const getServerSnapshot = () => false;
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const mounted = useSyncExternalStore(
-    emptySubscribe,
-    getClientSnapshot,
-    getServerSnapshot,
-  );
+  const mounted = useSyncExternalStore(emptySubscribe, getClientSnapshot, getServerSnapshot);
 
   const options = [
     { value: "light", label: "라이트 모드", icon: SunIcon },
@@ -27,7 +23,7 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="bg-card/50 border-glass-border h-8.5 w-22 animate-pulse rounded-lg border" />
+      <div className="h-8.5 w-22 animate-pulse rounded-lg border border-glass-border bg-card/50" />
     );
   }
 
@@ -35,7 +31,7 @@ export function ThemeToggle() {
 
   return (
     <div
-      className="bg-card/60 border-glass-border flex shrink-0 items-center rounded-lg border p-0.5 shadow-sm"
+      className="flex shrink-0 items-center rounded-lg border border-glass-border bg-card/60 p-0.5 shadow-sm"
       role="radiogroup"
       aria-label="테마 선택"
     >
@@ -55,7 +51,7 @@ export function ThemeToggle() {
             className={`cursor-pointer rounded-md p-1.5 transition-all duration-200 ${
               isSelected
                 ? "bg-primary/15 text-primary-light shadow-xs"
-                : "text-muted hover:text-foreground hover:bg-card-hover"
+                : "text-muted hover:bg-card-hover hover:text-foreground"
             }`}
           >
             <Icon className="h-4 w-4" />

@@ -101,9 +101,7 @@ function buildSchedule(
   subjectCounts: SubjectCounts,
 ): { classSlots: ClassSlot[]; dismissalTime: Date; totalClasses: number } {
   const totalClasses =
-    (subjectCounts.english || 0) +
-    (subjectCounts.math || 0) +
-    (subjectCounts.science || 0);
+    (subjectCounts.english || 0) + (subjectCounts.math || 0) + (subjectCounts.science || 0);
 
   const duration = totalClasses >= 3 ? 60 : 70;
   const slots: ClassSlot[] = [];
@@ -139,19 +137,13 @@ function buildSchedule(
 /*  `now` is passed in so this function stays pure (no Date.now())     */
 /* ------------------------------------------------------------------ */
 
-export function computeStudentDerived(
-  student: Student,
-  now: number,
-): StudentDerived {
+export function computeStudentDerived(student: Student, now: number): StudentDerived {
   const diffMs = now - student.arrivalDate.getTime();
   const elapsedMinutes = Math.max(0, Math.floor(diffMs / 60_000));
 
   let currentClassIndex = -1;
   for (let i = 0; i < student.classSlots.length; i++) {
-    if (
-      now >= student.classSlots[i].start.getTime() &&
-      now < student.classSlots[i].end.getTime()
-    ) {
+    if (now >= student.classSlots[i].start.getTime() && now < student.classSlots[i].end.getTime()) {
       currentClassIndex = i;
       break;
     }
@@ -207,9 +199,7 @@ export function useStudentManager() {
   const [formName, setFormName] = useState("");
   const [formHourInput, setFormHourInput] = useState("4");
   const [formMinuteInput, setFormMinuteInput] = useState("30");
-  const [subjectCounts, setSubjectCounts] = useState<SubjectCounts>(
-    INITIAL_SUBJECT_COUNTS,
-  );
+  const [subjectCounts, setSubjectCounts] = useState<SubjectCounts>(INITIAL_SUBJECT_COUNTS);
   const [isAM, setIsAM] = useState(false); // default PM (오후)
 
   const toggleSubject = useCallback((subject: SubjectType) => {
@@ -219,8 +209,7 @@ export function useStudentManager() {
     }));
   }, []);
 
-  const totalSelectedClasses =
-    subjectCounts.english + subjectCounts.math + subjectCounts.science;
+  const totalSelectedClasses = subjectCounts.english + subjectCounts.math + subjectCounts.science;
 
   // ---- Refs for stable callbacks ----
   const firedNotifications = useRef<Set<string>>(new Set());
@@ -244,10 +233,7 @@ export function useStudentManager() {
   // ---- Notification permission ----
   useEffect(() => {
     if (typeof window === "undefined" || !("Notification" in window)) return;
-    const tid = setTimeout(
-      () => setNotificationPermission(Notification.permission),
-      0,
-    );
+    const tid = setTimeout(() => setNotificationPermission(Notification.permission), 0);
     return () => clearTimeout(tid);
   }, []);
 
@@ -348,10 +334,7 @@ export function useStudentManager() {
       0,
     );
 
-    const { classSlots, dismissalTime, totalClasses } = buildSchedule(
-      arrivalDate,
-      subjectCounts,
-    );
+    const { classSlots, dismissalTime, totalClasses } = buildSchedule(arrivalDate, subjectCounts);
 
     const student: Student = {
       id: crypto.randomUUID(),
@@ -371,13 +354,7 @@ export function useStudentManager() {
     setSubjectCounts(INITIAL_SUBJECT_COUNTS);
 
     requestNotificationPermission();
-  }, [
-    parsed,
-    formName,
-    subjectCounts,
-    totalSelectedClasses,
-    requestNotificationPermission,
-  ]);
+  }, [parsed, formName, subjectCounts, totalSelectedClasses, requestNotificationPermission]);
 
   // ---- Remove student ----
   const removeStudent = useCallback((id: string) => {
@@ -403,8 +380,7 @@ export function useStudentManager() {
     isAM,
     setIsAM,
     parsedTimeDisplay,
-    canAddStudent:
-      parsed !== null && formName.trim().length > 0 && totalSelectedClasses > 0,
+    canAddStudent: parsed !== null && formName.trim().length > 0 && totalSelectedClasses > 0,
     addStudent,
     removeStudent,
     notificationPermission,
