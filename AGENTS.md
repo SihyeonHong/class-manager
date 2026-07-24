@@ -16,10 +16,10 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## 2. Documentation & Implementation Planning
 
-- **Documentation**: Unless instructed otherwise, when creating documentation or note records, create new `.md` files under the `docs/` directory.
-- **Implementation Plans**: Unless instructed otherwise, create implementation plans as `.md` files inside the `docs/` directory.
+- **Documentation**: Unless instructed otherwise, when creating documentation or note records, create new `.md` files under the `docs/ai` directory.
+- **Implementation Plan**: Unless instructed otherwise, create implementation plans as `.md` files inside the `docs/ai` directory.
 - **Plan Workflow**:
-  1. Write the implementation plan in `docs/`.
+  1. Write the implementation plan in `docs/ai`.
   2. Update the plan document when user feedback is received.
   3. Begin implementation only after receiving explicit user approval for the plan.
 

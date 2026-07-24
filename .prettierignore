@@ -4,7 +4,6 @@ out/
 build/
 coverage/
 public/
-docs/
 *.lock
 *.tsbuildinfo
 next-env.d.ts
